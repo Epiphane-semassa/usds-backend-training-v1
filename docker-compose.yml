@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - DB_HOST=localhost
+      - DB_USER=root
+      - DB_PASSWORD=
+      - DB_NAME=usds-backend-room
+      - DB_PORT=3306
+      - MONGOOSE_DB_URI=mongodb://localhost:27017/usds-backend-room
+      - JWT_SECRET=c5f6f4cbf52ceface87b950a408f7958b1e4f764c66756e4e3cdce5d8be8e95b
+    depends_on:
+      - db
+    volumes:
+      - ./src:/app/src
+
+
+  db:
+    image: mysql:latest
+    environment:
+        MYSQL_ROOT_PASSWORD:
+        MYSQL_DATABASE: usds-backend-room
+        MYSQL_USER: root
+        MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+    ports:
+        - "3306:3306"
+    volumes:
+        - mysql_data:/var/lib/mysql
+
+
+volumes:
+  mysql_data:
+    driver: local
