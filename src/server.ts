@@ -32,10 +32,10 @@ const corsOptions = {
 appExpress.use(express.json());
 
 appExpress.use("/api", apiRouter);
-appExpress.use("/api/products", apiProductsSqlRouter);
+//appExpress.use("/api/products", apiProductsSqlRouter);
 //appExpress.use("/api/products", apiProductsNoSqlRouter);
-appExpress.use("/api/auth", apiAuthenticationRouter);
-appExpress.use("/api/users", apiUsersRouter);
+//appExpress.use("/api/auth", apiAuthenticationRouter);
+//appExpress.use("/api/users", apiUsersRouter);
 
 
 // Run server
